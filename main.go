@@ -3,5 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("It works!")
+	x := 312442123
+	xAsBinary := fmt.Sprintf("%b", x)
+	fmt.Println(xAsBinary)
 }
