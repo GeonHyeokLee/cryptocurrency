@@ -1,4 +1,4 @@
-module github.com/GeonHyeok-Lee/nomadcoin
+module github.com/GeonHyeok-Lee/minimal-cryptocurrency
 
 go 1.16
 

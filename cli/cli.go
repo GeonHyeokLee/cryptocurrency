@@ -6,15 +6,17 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/GeonHyeok-Lee/nomadcoin/explorer"
-	"github.com/GeonHyeok-Lee/nomadcoin/rest"
+	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/explorer"
+	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/rest"
 )
 
 func usage() {
-	fmt.Printf("Welcome to 노마드 코인\n\n")
+	fmt.Printf("\n\n-------------------------------------------------------------\n\n")
+	fmt.Printf("Welcome to CryptoCurrency!\n\n")
 	fmt.Printf("Please use the following commands:\n\n")
 	fmt.Printf("-port: 			the PORT of the server\n")
 	fmt.Printf("-mode: 			Choose between 'html' and 'rest'\n\n")
+	fmt.Printf("-------------------------------------------------------------\n\n")
 	runtime.Goexit()
 }
 

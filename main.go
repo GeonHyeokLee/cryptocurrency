@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/GeonHyeok-Lee/nomadcoin/cli"
-	"github.com/GeonHyeok-Lee/nomadcoin/db"
+	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/cli"
+	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/db"
 )
 
 func main() {

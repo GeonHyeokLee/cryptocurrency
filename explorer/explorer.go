@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/GeonHyeok-Lee/nomadcoin/blockchain"
+	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/blockchain"
 )
 
 const (
@@ -31,9 +31,9 @@ func add(rw http.ResponseWriter, r *http.Request) {
 	case "GET":
 		templates.ExecuteTemplate(rw, "add", nil)
 	case "POST":
-		r.ParseForm()
-		data := r.Form.Get("blockData")
-		blockchain.Blockchain().AddBlock(data)
+		// r.ParseForm()
+		// data := r.Form.Get("blockData")
+		blockchain.Blockchain().AddBlock()
 		http.Redirect(rw, r, "/", http.StatusPermanentRedirect)
 	}
 }
