@@ -6,6 +6,7 @@ import (
 	"encoding/gob"
 	"fmt"
 	"log"
+	"time"
 )
 
 func HandleErr(err error) {
@@ -31,4 +32,8 @@ func Hash(i interface{}) string {
 	s := fmt.Sprintf("%v", i)
 	hash := sha256.Sum256([]byte(s))
 	return fmt.Sprintf("%x", hash)
+}
+
+func Timestamp() int {
+	return int(time.Now().Unix())
 }
