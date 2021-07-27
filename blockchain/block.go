@@ -17,7 +17,7 @@ type Block struct {
 	Difficulty   int    `json:"difficulty"`
 	Nonce        int    `json:"nonce"`
 	Timestamp    int    `json:"timestamp"`
-	Transactions []*Tx  `json:transactions`
+	Transactions []*Tx  `json:"transactions"`
 }
 
 func (b *Block) persist() {
@@ -61,7 +61,7 @@ func createBlock(prevHash string, height int) *Block {
 		Hash:       "",
 		PrevHash:   prevHash,
 		Height:     height,
-		Difficulty: Blockchain().difficulty(),
+		Difficulty: difficulty(Blockchain()),
 		Nonce:      0,
 	}
 	block.mine()
