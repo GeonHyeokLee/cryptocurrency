@@ -1,11 +1,12 @@
 package main
 
 import (
-	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/cli"
-	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/db"
+	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/wallet"
 )
 
 func main() {
-	defer db.Close()
-	cli.Start()
+	// defer db.Close()
+	// cli.Start()
+
+	wallet.Start()
 }
