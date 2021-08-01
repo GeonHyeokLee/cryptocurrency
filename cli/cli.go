@@ -4,7 +4,6 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"runtime"
 
 	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/explorer"
 	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/rest"
@@ -17,7 +16,8 @@ func usage() {
 	fmt.Printf("-port: 			the PORT of the server\n")
 	fmt.Printf("-mode: 			Choose between 'html' and 'rest'\n\n")
 	fmt.Printf("-------------------------------------------------------------\n\n")
-	runtime.Goexit()
+	// runtime.Goexit()
+	os.Exit(0)
 }
 
 func Start() {
