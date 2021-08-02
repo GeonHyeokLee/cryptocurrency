@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/blockchain"
+	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/p2p"
 	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/utils"
 	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/wallet"
 	"github.com/gorilla/mux"
@@ -79,6 +80,11 @@ func documentation(rw http.ResponseWriter, r *http.Request) {
 			Method:      "GET",
 			Description: "Get TxOuts for an Address",
 		},
+		{
+			URL:         url("/ws"),
+			Method:      "GET",
+			Description: "Upgrade to WebSockets",
+		},
 	}
 	utils.HandleErr(json.NewEncoder(rw).Encode(data))
 }
@@ -114,6 +120,14 @@ func jsonContentTypeMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(
 		func(rw http.ResponseWriter, r *http.Request) {
 			rw.Header().Add("Content-Type", "application/json")
+			next.ServeHTTP(rw, r)
+		})
+}
+
+func loggerMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(
+		func(rw http.ResponseWriter, r *http.Request) {
+			fmt.Println(r.RequestURI)
 			next.ServeHTTP(rw, r)
 		})
 }
@@ -158,7 +172,7 @@ func myWallet(rw http.ResponseWriter, r *http.Request) {
 func Start(aPort int) {
 	router := mux.NewRouter()
 	port = fmt.Sprintf(":%d", aPort)
-	router.Use(jsonContentTypeMiddleware)
+	router.Use(jsonContentTypeMiddleware, loggerMiddleware)
 	router.HandleFunc("/", documentation).Methods("GET")
 	router.HandleFunc("/status", status).Methods("GET")
 	router.HandleFunc("/blocks", blocks).Methods("GET", "POST")
@@ -167,6 +181,7 @@ func Start(aPort int) {
 	router.HandleFunc("/mempool", mempool).Methods("GET")
 	router.HandleFunc("/wallet", myWallet).Methods("GET")
 	router.HandleFunc("/transactions", transactions).Methods("POST")
+	router.HandleFunc("/ws", p2p.Upgrade).Methods("GET")
 	fmt.Printf("Listening on http://localhost%s\n", port)
 	log.Fatal(http.ListenAndServe(port, router))
 }
