@@ -1,13 +1,13 @@
 package p2p
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/utils"
 	"github.com/gorilla/websocket"
 )
 
+var conns []*websocket.Conn
 var upgrader = websocket.Upgrader{
 	ReadBufferSize:  1024,
 	WriteBufferSize: 1024,
@@ -18,10 +18,17 @@ func Upgrade(rw http.ResponseWriter, r *http.Request) {
 		return true
 	}
 	conn, err := upgrader.Upgrade(rw, r, nil)
+	conns = append(conns, conn)
 	utils.HandleErr(err)
 	for {
 		_, p, err := conn.ReadMessage()
-		utils.HandleErr(err)
-		fmt.Printf("%s\n\n", p)
+		if err != nil {
+			break
+		}
+		for _, aConn := range conns {
+			if aConn != conn {
+				utils.HandleErr(aConn.WriteMessage(websocket.TextMessage, p))
+			}
+		}
 	}
 }
