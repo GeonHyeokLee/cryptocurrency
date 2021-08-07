@@ -1,7 +1,7 @@
 package db
 
 import (
-	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/utils"
+	"github.com/GeonHyeok-Lee/cryptocurrency/utils"
 	"github.com/boltdb/bolt"
 )
 

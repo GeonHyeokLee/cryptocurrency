@@ -10,7 +10,7 @@ import (
 	"math/big"
 	"os"
 
-	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/utils"
+	"github.com/GeonHyeok-Lee/cryptocurrency/utils"
 )
 
 type wallet struct {

@@ -3,8 +3,8 @@ package blockchain
 import (
 	"sync"
 
-	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/db"
-	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/utils"
+	"github.com/GeonHyeok-Lee/cryptocurrency/db"
+	"github.com/GeonHyeok-Lee/cryptocurrency/utils"
 )
 
 const (

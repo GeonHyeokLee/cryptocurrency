@@ -5,8 +5,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/db"
-	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/utils"
+	"github.com/GeonHyeok-Lee/cryptocurrency/db"
+	"github.com/GeonHyeok-Lee/cryptocurrency/utils"
 )
 
 type Block struct {

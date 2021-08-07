@@ -6,10 +6,10 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/blockchain"
-	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/p2p"
-	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/utils"
-	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/wallet"
+	"github.com/GeonHyeok-Lee/cryptocurrency/blockchain"
+	"github.com/GeonHyeok-Lee/cryptocurrency/p2p"
+	"github.com/GeonHyeok-Lee/cryptocurrency/utils"
+	"github.com/GeonHyeok-Lee/cryptocurrency/wallet"
 	"github.com/gorilla/mux"
 )
 
@@ -45,6 +45,10 @@ type errorResponse struct {
 type addTxPayload struct {
 	To     string
 	Amount int
+}
+
+type addPeerPayload struct {
+	Address, Port string
 }
 
 func documentation(rw http.ResponseWriter, r *http.Request) {
@@ -169,6 +173,18 @@ func myWallet(rw http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(rw).Encode(myWalletResponse{Address: address})
 }
 
+func peers(rw http.ResponseWriter, r *http.Request) {
+	switch r.Method {
+	case "POST":
+		var payload addPeerPayload
+		json.NewDecoder(r.Body).Decode(&payload)
+		p2p.AddPeer(payload.Address, payload.Port, port)
+		rw.WriteHeader(http.StatusOK)
+	case "GET":
+		json.NewEncoder(rw).Encode(p2p.Peers)
+	}
+}
+
 func Start(aPort int) {
 	router := mux.NewRouter()
 	port = fmt.Sprintf(":%d", aPort)
@@ -182,6 +198,7 @@ func Start(aPort int) {
 	router.HandleFunc("/wallet", myWallet).Methods("GET")
 	router.HandleFunc("/transactions", transactions).Methods("POST")
 	router.HandleFunc("/ws", p2p.Upgrade).Methods("GET")
+	router.HandleFunc("/peers", peers).Methods("GET", "POST")
 	fmt.Printf("Listening on http://localhost%s\n", port)
 	log.Fatal(http.ListenAndServe(port, router))
 }

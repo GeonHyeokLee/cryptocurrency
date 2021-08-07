@@ -4,8 +4,8 @@ import (
 	"errors"
 	"time"
 
-	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/utils"
-	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/wallet"
+	"github.com/GeonHyeok-Lee/cryptocurrency/utils"
+	"github.com/GeonHyeok-Lee/cryptocurrency/wallet"
 )
 
 const (

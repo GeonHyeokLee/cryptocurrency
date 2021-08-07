@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/blockchain"
+	"github.com/GeonHyeok-Lee/cryptocurrency/blockchain"
 )
 
 const (

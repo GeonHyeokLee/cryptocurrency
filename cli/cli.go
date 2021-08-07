@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/explorer"
-	"github.com/GeonHyeok-Lee/minimal-cryptocurrency/rest"
+	"github.com/GeonHyeok-Lee/cryptocurrency/explorer"
+	"github.com/GeonHyeok-Lee/cryptocurrency/rest"
 )
 
 func usage() {

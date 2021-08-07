@@ -1,4 +1,4 @@
-module github.com/GeonHyeok-Lee/minimal-cryptocurrency
+module github.com/GeonHyeok-Lee/cryptocurrency
 
 go 1.16
 

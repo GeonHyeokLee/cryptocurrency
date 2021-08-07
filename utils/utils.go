@@ -6,6 +6,7 @@ import (
 	"encoding/gob"
 	"fmt"
 	"log"
+	"strings"
 	"time"
 )
 
@@ -36,4 +37,12 @@ func Hash(i interface{}) string {
 
 func Timestamp() int {
 	return int(time.Now().Unix())
+}
+
+func Splitter(s, sep string, i int) string {
+	r := strings.Split(s, sep)
+	if len(r)-1 < i {
+		return ""
+	}
+	return r[i]
 }
