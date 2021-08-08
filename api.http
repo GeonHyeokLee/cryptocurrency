@@ -28,8 +28,9 @@ GET http://localhost:4000/mempool
 POST http://localhost:4000/peers
 
 {
-  "address": "192.168.0.33",
-  "port": "3000",
+  "address":"192.168.0.33",
+  "port":"3000"
 }
+
 ###
 GET http://localhost:4000/peers
