@@ -22,14 +22,14 @@ type homeData struct {
 }
 
 func home(rw http.ResponseWriter, r *http.Request) {
-	data := homeData{"Home", nil}
+	data := homeData{"GHLEEECoin Explorer", blockchain.Blocks(blockchain.Blockchain())}
 	templates.ExecuteTemplate(rw, "home", data)
 }
 
 func add(rw http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
-		templates.ExecuteTemplate(rw, "add", nil)
+		templates.ExecuteTemplate(rw, "add", blockchain.Blockchain().CurrentDifficulty)
 	case "POST":
 		// r.ParseForm()
 		// data := r.Form.Get("blockData")

@@ -3,8 +3,10 @@
 <html lang="en">
   {{template "head" "Add"}}
   <body>
-    {{template "header" "Add"}}
+    {{template "header"}}
+    {{template "subtitle" "Add new block to GHLEEE's blockchain world!"}}
     <main>
+      <h3>Current Difficulty: {{.}}</h3>
       <form method="POST">
         <input 
           type="text"

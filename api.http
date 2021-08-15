@@ -7,7 +7,7 @@ GET http://localhost:4000/blocks
 POST http://localhost:4000/blocks
 
 {
-  "message":"Mine Me!"
+  "message":"0이 앞에서 부터 연속으로 6개인 해시 값을 찾을거야! (feat.건혁)"
 }
 ###
 GET http://localhost:4000/balance/036c0630e5fdbc7f5f02952bf23740c468c4238a49a73d9f149df05e1c0410da47439bdeebd89b7f374fa523338cf505bcf740a04ae18043a5e40998ccb407c1

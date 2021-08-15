@@ -1,11 +1,15 @@
 {{define "block"}}
-  <div>
-    <ul>
-      <li>{{.Data}}</li>
-      <li>{{.Hash}}</li>
+  <div class="block">
+    <ul style="padding-right: 1em;">
+      <li>Hash: {{.Hash}}</li>
       {{if .PrevHash}}
-      <li>{{.PrevHash}}</li>
+      <li>PrevHash: {{.PrevHash}}</li>
       {{end}}
+      <li>Height: {{.Height}}</li>
+      <li>Difficulty: {{.Difficulty}}</li>
+      <li>Nonce: {{.Nonce}}</li>
+      <li>Timestamp: {{.Timestamp}}</li>
+      <li>Transactions: {{.Transactions}}</li>
     </ul>
   </div>
 {{end}}
